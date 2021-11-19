@@ -62,3 +62,35 @@ Using Strategy pattern
 ## Maximize Cohesion
 
 Cohesion of a single module/component is the degree to which its responsibilities form a meaningful unit; higher cohesion is better.
+
+
+## Open/Closed Principle
+
+the open/closed principle states “software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification”; that is, such an entity can allow its behavior to be extended without modifying its source code.
+
+WHY?
+
+-   Improve maintainability and stability by minimizing changes to existing code
+
+HOW?
+
+-   Write classes that can be extended (as opposed to classes that can be modified)
+-   Expose only the moving parts that need to change, hide everything else
+## Single Responsibility Principle
+
+## Interface Segregation Principle
+
+The interface-segregation principle (ISP) states that no client should be forced to depend on methods it does not use. ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them.
+Avoid fat interfaces.
+
+# Command Query Separation
+
+It states that every method should either be a command that performs an action, or a query that returns data to the caller, but not both. In other words, Asking a question should not change the answer.
+
+Consider the following pseudo-code service definition.
+
+**CustomerService**void MakeCustomerPreferred(CustomerId)Customer GetCustomer(CustomerId)CustomerSet GetCustomersWithName(Name)CustomerSet GetPreferredCustomers()void ChangeCustomerLocale(CustomerId, NewLocale)void CreateCustomer(Customer)void EditCustomerDetails(CustomerDetails)
+
+Applying CQRS on this would result in two services,
+
+**CustomerWriteService**void MakeCustomerPreferred(CustomerId)void ChangeCustomerLocale(CustomerId, NewLocale)void CreateCustomer(Customer)void EditCustomerDetails(CustomerDetails)**CustomerReadService**Customer GetCustomer(CustomerId)CustomerSet GetCustomersWithName(Name)CustomerSet GetPreferredCustomers()
